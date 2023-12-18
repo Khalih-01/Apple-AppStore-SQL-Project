@@ -311,7 +311,7 @@ This shows the app with the highest number of ratings and the best ratings, so t
 **4. Apps with longer descriptions have better ratings.**
 - Users likely appreciate having a clear understanding of the apps features and capabilities before they download so a detailed well crafted app description can set clear expectations and eventually increase the satisfaction of users. 
    
-** 5. A new app should aim for an average rating above 3.5.** 
+**5. A new app should aim for an average rating above 3.5.** 
 - The average app has a rating of about 3.5 so in order to stand out A new app should aim for an average rating above 3.5. 
 
 **6. Apps in the games and entertainment genres have high competion.**
