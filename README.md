@@ -73,7 +73,7 @@ ORDER BY NumApps DESC
 ```
 
 prime_genre |	NumApps 
-:-------:|:-------:
+:-------|:-------:
 Games |	3862
 Entertainment | 535
 Education |	453
@@ -147,8 +147,8 @@ GROUP BY LanguageBucket
 ORDER BY AvgUserRating DESC
 ```
 
-LanguageBucket |	AvgUserRating
-:-------:|:-------:
+LanguageBucket | AvgUserRating
+:-------:|:-------
 10-30 languages	| 4.1305120910384066
 >30 languages | 3.7777777777777777
 <10 languages | 3.368327402135231
@@ -169,7 +169,7 @@ LIMIT 10
 ```
 
 prime_genre	| AvgUserRating
-:-------:|:-------:
+:-------|:-------
 Catalogs | 2.1
 Finance | 2.4326923076923075
 Book | 2.4776785714285716
@@ -227,7 +227,7 @@ WHERE RankingApps.AppRank = 1
 ```
 
 prime_genre |	track_name	| user_rating
-:-------:|:-------:|:-------:
+:-------|:-------|:-------:
 Book | Color Therapy Adult Coloring Book for Adults | 5
 Business | TurboScan™ Pro - document & receipt scanner: scan multiple pages and photos to PDF | 5
 Catalogs | CPlus for Craigslist app - mobile classifieds| 5
