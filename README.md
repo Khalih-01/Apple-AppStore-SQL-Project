@@ -138,9 +138,9 @@ Another question : Do apps with more supported languages get more ratings
 
 ```sql
 SELECT 
-  CASE WHEN lang_num < 10 THEN '<10 languages'
+  CASE WHEN lang_num < 10 THEN 'Less than 10 languages'
        WHEN lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
-       ELSE '>30 languages' END AS LanguageBucket,
+       ELSE 'More than 30 languages' END AS LanguageBucket,
   AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY LanguageBucket
@@ -149,9 +149,9 @@ ORDER BY AvgUserRating DESC
 
 LanguageBucket | AvgUserRating
 :-------:|:-------
-10-30 languages	| 4.1305120910384066
->30 languages | 3.7777777777777777
-<10 languages | 3.368327402135231
+10-30 languages| 4.1305120910384066
+More than 30 languages | 3.7777777777777777 
+Less than 10 languages | 3.368327402135231
 
 So its not really about the quantity of languages your app supports, it is more about focusing on the right languages for your app
 From the analysis we can see the middle bucket has a higher user rating so our client can focus his effort to other aspects of the app
@@ -219,7 +219,7 @@ FROM (
       prime_genre,
       track_name,
       user_rating,
-      RANK() OVER (PARTITION BY prime_genre ORDER BY user_rating DESC, rating_count_tot DESC) as AppRank
+      RANK() OVER (PARTITION BY prime_genre ORDER BY user_rating DESC, rating_count_tot DESC) AS AppRank
   FROM 
       AppleStore
   ) AS RankingApps
