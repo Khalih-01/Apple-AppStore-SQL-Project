@@ -39,7 +39,7 @@ WHERE track_name IS NULL OR app_desc IS NULL;
 
 SELECT
 	prime_genre,
-    COUNT(*) AS NumApps
+	COUNT(*) AS NumApps
 FROM AppleStore
 GROUP BY prime_genre
 ORDER BY NumApps DESC;
@@ -48,8 +48,8 @@ ORDER BY NumApps DESC;
 
 SELECT
 	MIN(user_rating) AS MinUserRating,
-    MAX(user_rating) AS MaxUserRating,
-    AVG(user_rating) AS AvgUserRating
+	MAX(user_rating) AS MaxUserRating,
+	AVG(user_rating) AS AvgUserRating
 FROM AppleStore;
     
 /* FINDING INSIGHTS */
@@ -57,8 +57,9 @@ FROM AppleStore;
 -- determine whether paid apps have higher ratings than free apps
 
 SELECT 
-	CASE WHEN price > 0 THEN 'Paid'
-    	 ELSE 'Free' END AS AppType,
+	CASE 
+		WHEN price > 0 THEN 'Paid'
+		ELSE 'Free' END AS AppType,
 	AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY AppType;
@@ -66,9 +67,10 @@ GROUP BY AppType;
 -- check if apps with more supported languages have higher ratings
 
 SELECT 
-	CASE WHEN lang_num < 10 THEN 'Less than 10 languages'
-    	 WHEN lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
-    	 ELSE 'More than 30 languages' END AS LanguageBucket,
+	CASE 
+		WHEN lang_num < 10 THEN 'Less than 10 languages'
+		WHEN lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
+		ELSE 'More than 30 languages' END AS LanguageBucket,
 	AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY LanguageBucket
@@ -87,9 +89,10 @@ LIMIT 10;
 -- check if there is correlation between the app description length and the user ratings 
 
 SELECT
-	CASE WHEN LENGTH(B.app_desc) < 500 THEN 'Short'
-    	 WHEN LENGTH(B.app_desc) BETWEEN 500 AND 1000 THEN 'Medium'
-    	 ELSE 'Long' END AS DescriptionLengthBucket,
+	CASE 
+		WHEN LENGTH(B.app_desc) < 500 THEN 'Short'
+		WHEN LENGTH(B.app_desc) BETWEEN 500 AND 1000 THEN 'Medium'
+		ELSE 'Long' END AS DescriptionLengthBucket,
     AVG(user_rating) AS AvgUserRating
 FROM
 	AppleStore AS A
