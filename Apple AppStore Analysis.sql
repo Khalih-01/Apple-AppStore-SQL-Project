@@ -38,8 +38,8 @@ WHERE track_name IS NULL OR app_desc IS NULL;
 -- Find out the number of apps per genre
 
 SELECT
-	prime_genre,
-	COUNT(*) AS NumApps
+    prime_genre,
+    COUNT(*) AS NumApps
 FROM AppleStore
 GROUP BY prime_genre
 ORDER BY NumApps DESC;
@@ -47,9 +47,9 @@ ORDER BY NumApps DESC;
 -- Get an overview of the app ratings
 
 SELECT
-	MIN(user_rating) AS MinUserRating,
-	MAX(user_rating) AS MaxUserRating,
-	AVG(user_rating) AS AvgUserRating
+    MIN(user_rating) AS MinUserRating,
+    MAX(user_rating) AS MaxUserRating,
+    AVG(user_rating) AS AvgUserRating
 FROM AppleStore;
     
 /* FINDING INSIGHTS */
@@ -57,21 +57,21 @@ FROM AppleStore;
 -- determine whether paid apps have higher ratings than free apps
 
 SELECT 
-	CASE 
-		WHEN price > 0 THEN 'Paid'
-		ELSE 'Free' END AS AppType,
-	AVG(user_rating) AS AvgUserRating
+    CASE 
+	    WHEN price > 0 THEN 'Paid'
+	    ELSE 'Free' END AS AppType,
+    AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY AppType;
 
 -- check if apps with more supported languages have higher ratings
 
 SELECT 
-	CASE 
-		WHEN lang_num < 10 THEN 'Less than 10 languages'
-		WHEN lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
-		ELSE 'More than 30 languages' END AS LanguageBucket,
-	AVG(user_rating) AS AvgUserRating
+    CASE 
+	    WHEN lang_num < 10 THEN 'Less than 10 languages'
+	    WHEN lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
+	    ELSE 'More than 30 languages' END AS LanguageBucket,
+    AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY LanguageBucket
 ORDER BY AvgUserRating DESC;
@@ -79,7 +79,7 @@ ORDER BY AvgUserRating DESC;
 -- check genres with low ratings 
 
 SELECT
-	prime_genre,
+    prime_genre,
     AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY prime_genre
@@ -89,24 +89,24 @@ LIMIT 10;
 -- check if there is correlation between the app description length and the user ratings 
 
 SELECT
-	CASE 
-		WHEN LENGTH(B.app_desc) < 500 THEN 'Short'
-		WHEN LENGTH(B.app_desc) BETWEEN 500 AND 1000 THEN 'Medium'
-		ELSE 'Long' END AS DescriptionLengthBucket,
+    CASE 
+	    WHEN LENGTH(B.app_desc) < 500 THEN 'Short'
+	    WHEN LENGTH(B.app_desc) BETWEEN 500 AND 1000 THEN 'Medium'
+	    ELSE 'Long' END AS DescriptionLengthBucket,
     AVG(user_rating) AS AvgUserRating
 FROM
-	AppleStore AS A
+    AppleStore AS A
 JOIN
-	AppleStore_Description_Combined AS B 
+    AppleStore_Description_Combined AS B 
 ON
-	A.id = B.id
+    A.id = B.id
 GROUP BY DescriptionLengthBucket
 ORDER BY AvgUserRating DESC;
 
 -- check top rated apps per genre
 
 SELECT
-	prime_genre,
+    prime_genre,
     track_name,
     user_rating
 FROM (
