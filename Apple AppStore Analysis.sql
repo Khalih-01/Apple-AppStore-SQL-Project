@@ -14,7 +14,7 @@ UNION ALL
 
 SELECT * FROM appleStore_description4;
 
-/* EXPLORATORY DATA ANALYSIS */
+/* UNDERSTANDING THE DATASET */
 
 -- check the number of unique Apps in both tables 
 
@@ -34,6 +34,7 @@ SELECT COUNT(*) AS MissingValue
 FROM AppleStore_Description_Combined
 WHERE track_name IS NULL OR app_desc IS NULL; 
 
+/* EXPLORATORY DATA ANALYSIS */
 
 -- Find out the number of apps per genre
 
@@ -52,8 +53,6 @@ SELECT
     AVG(user_rating) AS AvgUserRating
 FROM AppleStore;
     
-/* FINDING INSIGHTS */
-
 -- determine whether paid apps have higher ratings than free apps
 
 SELECT 
