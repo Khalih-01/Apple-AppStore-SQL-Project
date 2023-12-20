@@ -58,8 +58,8 @@ FROM AppleStore;
 
 SELECT 
     CASE 
-	    WHEN price > 0 THEN 'Paid'
-	    ELSE 'Free' END AS AppType,
+        WHEN price > 0 THEN 'Paid'
+        ELSE 'Free' END AS AppType,
     AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY AppType;
@@ -68,9 +68,9 @@ GROUP BY AppType;
 
 SELECT 
     CASE 
-	    WHEN lang_num < 10 THEN 'Less than 10 languages'
-	    WHEN lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
-	    ELSE 'More than 30 languages' END AS LanguageBucket,
+        WHEN lang_num < 10 THEN 'Less than 10 languages'
+        WHEN lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
+        ELSE 'More than 30 languages' END AS LanguageBucket,
     AVG(user_rating) AS AvgUserRating
 FROM AppleStore
 GROUP BY LanguageBucket
@@ -90,9 +90,9 @@ LIMIT 10;
 
 SELECT
     CASE 
-	    WHEN LENGTH(B.app_desc) < 500 THEN 'Short'
-	    WHEN LENGTH(B.app_desc) BETWEEN 500 AND 1000 THEN 'Medium'
-	    ELSE 'Long' END AS DescriptionLengthBucket,
+        WHEN LENGTH(B.app_desc) < 500 THEN 'Short'
+        WHEN LENGTH(B.app_desc) BETWEEN 500 AND 1000 THEN 'Medium'
+        ELSE 'Long' END AS DescriptionLengthBucket,
     AVG(user_rating) AS AvgUserRating
 FROM
     AppleStore AS A
